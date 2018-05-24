@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.swing.text.html.HTMLDocument.HTMLReader.CharacterAction;
 
 @Entity
 @Table(name="instructor_detail")
@@ -25,7 +26,7 @@ public class InstructorDetail {
 	private String hobby;
 	
 	//add new field for instructor ( also getter / setter )
-	@OneToOne(mappedBy="instructorDetail",cascade=CascadeType.ALL)
+	@OneToOne(mappedBy="instructorDetail",cascade= {CascadeType.DETACH,CascadeType.MERGE,CascadeType.PERSIST,CascadeType.REFRESH})
 	private Instructor instructor;
 
 	public InstructorDetail() {
